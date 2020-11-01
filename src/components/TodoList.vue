@@ -86,8 +86,9 @@ export default {
   methods: {
     reverte() {
       const copyArr = [...this.todos];
-      copyArr.splice(4, 1, { id: 10, name: "test" });
-      this.todos = copyArr;
+      copyArr.splice(1, 1, { id: 10, title: "test", desc:"" });
+      console.log("copyArr",copyArr);
+      this.todos = copyArr.reverse();
     }, 
     onSelect(evt){
       console.log()

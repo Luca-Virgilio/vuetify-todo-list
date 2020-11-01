@@ -1,51 +1,75 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <!-- <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+    <v-card class=" overflow-hidden flex">
+      <v-system-bar color="deep-purple darken-3"></v-system-bar>
 
-      <v-spacer></v-spacer> -->
+      <v-app-bar color="deep-purple accent-4" dark prominent>
+        <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+        <v-toolbar-title>Todo List</v-toolbar-title>
+      </v-app-bar>
 
-    </v-app-bar>
+      <v-navigation-drawer v-model="drawer" absolute top temporary>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title class="title"> Application </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
 
-    <v-content>
-      <TodoList/>
-    </v-content>
+        <v-divider></v-divider>
+        <v-list nav dense>
+          <v-list-item-group
+            v-model="group"
+            active-class="deep-purple--text text--accent-4"
+            v-for="view in views"
+            :key="view.name"
+            link
+          >
+            <v-list-item>
+              <v-list-item-icon>
+                <v-icon>{{ view.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>{{ view.name }}</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-navigation-drawer>
+
+      <v-card-text>
+        <Home />
+      </v-card-text>
+    </v-card>
   </v-app>
 </template>
 
 <script>
-import TodoList from './components/TodoList';
+import Home from "./views/Home";
 
 export default {
-  name: 'App',
-
+  name: "App",
   components: {
-    TodoList,
+    Home,
   },
-
   data: () => ({
-    //
+    drawer: false,
+    group: null,
+    views: [
+      { name: "home", icon: "mdi-view-dashboard", compoment: "Home" },
+      { name: "about", icon: "mdi-help-box", compoment: "About" },
+    ],
   }),
+
+  watch: {
+    group() {
+      this.drawer = false;
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
