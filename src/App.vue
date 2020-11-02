@@ -22,9 +22,8 @@
             active-class="deep-purple--text text--accent-4"
             v-for="view in views"
             :key="view.name"
-            link
           >
-            <v-list-item>
+            <v-list-item router :to="view.route">
               <v-list-item-icon>
                 <v-icon>{{ view.icon }}</v-icon>
               </v-list-item-icon>
@@ -33,28 +32,27 @@
           </v-list-item-group>
         </v-list>
       </v-navigation-drawer>
-
-      <v-card-text>
-        <Home />
-      </v-card-text>
+      <div><router-view /></div>
     </v-card>
   </v-app>
 </template>
 
 <script>
-import Home from "./views/Home";
+// import Home from "./views/Home";
+// import About from "./views/About";
 
 export default {
   name: "App",
   components: {
-    Home,
+    // Home,
+    // About
   },
   data: () => ({
     drawer: false,
     group: null,
     views: [
-      { name: "home", icon: "mdi-view-dashboard", compoment: "Home" },
-      { name: "about", icon: "mdi-help-box", compoment: "About" },
+      { name: "Home", icon: "mdi-view-dashboard", route: "/" },
+      { name: "About", icon: "mdi-help-box", route: "/about" },
     ],
   }),
 
