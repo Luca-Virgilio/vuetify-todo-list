@@ -1,5 +1,5 @@
 <template>
-  <div id="Home">
+  <div class="Home-container">
     <v-list-item v-for="todo in todos" :key="todo.id">
       <Todo :todo="todo" />       
     </v-list-item>
@@ -37,3 +37,9 @@ export default {
   }),
 };
 </script>
+
+<style scoped>
+.v-list-item.theme--light{
+  padding: 0;
+}
+</style>
