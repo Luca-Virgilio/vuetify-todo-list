@@ -14,13 +14,13 @@
 </span> -->
   <!-- <div class="todo-item"> -->
     <v-list-item style="background-color:#BDBDBD;  padding: 0 10px;"> 
-    <v-checkbox :input-value="todo.completed" color="black"></v-checkbox>
-    <v-list-item-title color="black">{{
+    <v-checkbox :input-value="todo.completed" color="black" @click="todo.completed = !todo.completed"></v-checkbox>
+    <v-list-item-title color="black" :class={}>{{
       todo.title
     }}</v-list-item-title>
     <v-spacer></v-spacer>
     <v-btn icon>
-      <v-icon color="black">mdi-delete</v-icon>
+      <v-icon color="black" @click="$emit('delate',todo.id)">mdi-delete</v-icon>
     </v-btn>
     </v-list-item>
   <!-- </div> -->

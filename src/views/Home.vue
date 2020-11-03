@@ -1,7 +1,7 @@
 <template>
   <div class="Home-container">
     <v-list-item v-for="todo in todos" :key="todo.id">
-      <Todo :todo="todo" />       
+      <Todo :todo="todo" @delate="delateItem"/>       
     </v-list-item>
   </div>
 </template>
@@ -35,6 +35,12 @@ export default {
       },
     ],
   }),
+  methods:{
+    delateItem (id){
+      console.log("id",id);
+      this.todos = this.todos.filter(item => item.id != id);
+    }
+  }
 };
 </script>
 
