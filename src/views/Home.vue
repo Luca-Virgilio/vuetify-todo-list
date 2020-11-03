@@ -1,19 +1,23 @@
 <template>
   <div class="Home-container">
-    <v-list-item v-for="todo in todos" :key="todo.id">
-      <Todo :todo="todo" @delate="delateItem"/>       
-    </v-list-item>
+    <AddTodo @addTodo="createItem" />
+    <v-card outlined>
+      <v-list-item v-for="todo in todos" :key="todo.id">
+        <Todo :todo="todo" @delate="delateItem" />
+      </v-list-item>
+    </v-card>
   </div>
 </template>
 
-
 <script>
-import Todo from '../components/Todo';
+import Todo from "../components/Todo";
+import AddTodo from "../components/AddTodo";
 
 export default {
   name: "Home",
   components: {
-    Todo
+    Todo,
+    AddTodo,
   },
 
   data: () => ({
@@ -35,17 +39,21 @@ export default {
       },
     ],
   }),
-  methods:{
-    delateItem (id){
-      console.log("id",id);
-      this.todos = this.todos.filter(item => item.id != id);
-    }
-  }
+  methods: {
+    delateItem(id) {
+      // console.log("id", id);
+      this.todos = this.todos.filter((item) => item.id != id);
+    },
+    createItem(item) {
+      // console.log("add item");
+      this.todos = [...this.todos, item];
+    },
+  },
 };
 </script>
 
 <style scoped>
-.v-list-item.theme--light{
+.v-list-item.theme--light {
   padding: 0;
 }
 </style>

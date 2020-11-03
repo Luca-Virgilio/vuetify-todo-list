@@ -13,7 +13,7 @@
         </v-list-item-action>
 </span> -->
   <!-- <div class="todo-item"> -->
-    <v-list-item style="background-color:#BDBDBD;  padding: 0 10px;"> 
+    <v-list-item style="background-color:#D1C4E9;  padding: 0 10px;"> 
     <v-checkbox :input-value="todo.completed" color="black" @click="todo.completed = !todo.completed"></v-checkbox>
     <v-list-item-title color="black" :class={}>{{
       todo.title
