@@ -47,7 +47,9 @@ export default {
     group: null,
     views: [
       { name: "Home", icon: "mdi-view-dashboard", route: "/" },
+      { name: "Store", icon: "mdi-store", route: "/store" },
       { name: "About", icon: "mdi-help-box", route: "/about" },
+
     ],
   }),
   watch: {
