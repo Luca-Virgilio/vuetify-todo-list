@@ -14,7 +14,7 @@ export default new Router({
       component: Home,
     },
     {
-      path: "/store",
+      path: "/store/:section",
       name: "store",
       //lazy-loaded code splitting
       //this generates separate chunk for this route.

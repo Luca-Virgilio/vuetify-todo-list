@@ -27,7 +27,8 @@
           v-for="view in views"
           :key="view.name"
         >
-          <v-list-item router :to="view.route">
+        <!-- params :key="$route.path" reload the component when change path-->
+          <v-list-item router :to="{name: view.component, params:view.params}" :key="$route.path">
             <v-list-item-icon>
               <v-icon>{{ view.icon }}</v-icon>
             </v-list-item-icon>
@@ -46,9 +47,9 @@ export default {
     drawer: false,
     group: null,
     views: [
-      { name: "Home", icon: "mdi-view-dashboard", route: "/" },
-      { name: "Store", icon: "mdi-store", route: "/store" },
-      { name: "About", icon: "mdi-help-box", route: "/about" },
+      { name: "Home", icon: "mdi-view-dashboard", route: "/", component:"home" },
+      { name: "Store", icon: "mdi-store", route: "/store" , component:"store", params:{section:"IT"}  },
+      { name: "About", icon: "mdi-help-box", route: "/about", component:"about" },
 
     ],
   }),
