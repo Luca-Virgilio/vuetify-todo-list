@@ -5,6 +5,7 @@
         <v-row>
           <v-col cols="8" md="4">
             <v-text-field
+              ref="nameInput"
               color="deep-purple darken-3"
               v-model="title"
               :rules="titleRules"
@@ -30,7 +31,7 @@
 </template>
 
 <script>
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from "uuid";
 
 export default {
   name: "AddTodo",
@@ -53,7 +54,8 @@ export default {
       };
       console.log("new Todo", newTodo);
       this.title = "";
-      this.$emit('addTodo', newTodo);
+      this.$refs.nameInput.isResetting = true;
+      this.$emit("addTodo", newTodo);
     },
   },
 };

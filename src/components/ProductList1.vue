@@ -39,12 +39,12 @@ export default {
   },
   methods: {
     reducePrice: function(value) {
-    // fire a mutation
-     this.$store.commit('reducePrice', value);
+      // fire a mutation
+      this.$store.commit("reducePrice", value);
     },
     reducePriceFy: function(value) {
-    // fire an action (async request)
-     this.$store.dispatch('reducePriceFy', value);
+      // fire an action (async request)
+      this.$store.dispatch("reducePriceFy", value);
     },
   },
 };
