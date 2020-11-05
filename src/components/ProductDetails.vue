@@ -1,9 +1,6 @@
 <template>
   <div class="text-center">
-    <v-dialog
-      v-model="dialog"
-      width="500"
-    >
+    <v-dialog v-model="dialogTest" width="500">
       <!-- <template v-slot:activator="{ on, attrs }">
         <v-btn
           color="red lighten-2"
@@ -17,21 +14,23 @@
 
       <v-card>
         <v-card-title class="headline grey lighten-2">
-          {{name}}
+          {{ name }}
         </v-card-title>
         <v-card-text>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
         </v-card-text>
 
         <v-divider></v-divider>
 
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            text
-            
-          >
+          <v-btn color="primary" text>
             Buy
           </v-btn>
         </v-card-actions>
@@ -41,21 +40,36 @@
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        
-      }
+export default {
+  data() {
+    return {
+      temp: null,
+    };
+  },
+  props: {
+    name: {
+      type: String,
+      required: true,
     },
-    props:{
-        name:{
-            type:String,
-            required:true
-        },
-        dialog:{
-            type:Boolean,
-            required:true
-        }
+    dialog: {
+      type: Boolean,
+      required: true,
     },
-  }
+    section: {
+      type: String,
+      required: true,
+    },
+  },
+  computed: {
+    dialogTest: {
+      get: function() {
+        const bool = this.dialog;
+        return bool;
+      },
+      set: function() {
+        this.$router.push({ name: "store", params: { section: this.section } });
+      },
+    },
+  },
+};
 </script>

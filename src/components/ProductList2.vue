@@ -7,7 +7,7 @@
       <v-row>
         <v-col cols="6" md="4" v-for="product in products" :key="product.name">
           <router-link 
-          :to="{name:'productDetails', params:{name:product.name, dialog:true}}" :key="$route.path">
+          :to="{name:'productDetails', params:{name:product.name, section:section, dialog:true}}" :key="$route.path">
           <v-card max-width="350">
             <v-img
               src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
@@ -33,6 +33,12 @@
 <script>
 export default {
   name: "ProductList2",
+  props:{
+    section:{
+      type:String,
+      required:true
+    }
+  },
   computed: {
     products() {
       return this.$store.state.products;

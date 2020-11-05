@@ -3,7 +3,7 @@
     <h1 class="flex text-uppercase" style="color:#B71C1C">Store {{section}}</h1>
     <v-container>
       <ProductList1 />
-      <ProductList2 />
+      <ProductList2 :section="section"/>
       </v-container>
   </v-container>
 </template>
