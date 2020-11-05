@@ -15,8 +15,11 @@ import ProductList2 from "../components/ProductList2";
 export default {
   name: "Store",
   components: { ProductList1, ProductList2 },
-   data:function() {
-    return{section:this.$route.params.section}
-  },
+  props:{
+    section:{
+      type:String,
+      required:true
+    }
+  }
 };
 </script>

@@ -16,6 +16,9 @@ export default new Router({
     {
       path: "/store/:section",
       name: "store",
+      // query and params are props. 
+      // for decoupling components
+      props:true,
       //lazy-loaded code splitting
       //this generates separate chunk for this route.
       // which is lazy-loaded when the route is visited
