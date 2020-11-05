@@ -16,14 +16,25 @@ export default new Router({
     {
       path: "/store/:section",
       name: "store",
-      // query and params are props. 
+      // query and params are props.
       // for decoupling components
-      props:true,
+      props: true,
       //lazy-loaded code splitting
       //this generates separate chunk for this route.
       // which is lazy-loaded when the route is visited
       component: () =>
         import(/* webpackChunkName: "store" */ "./views/Store.vue"),
+      children: [
+        {
+          path: "product/:name",
+          name: "productDetails",
+          props: true,
+          component: () =>
+            import(
+              /* webpackChunkName: "store" */ "./components/ProductDetails.vue"
+            ),
+        },
+      ],
     },
     {
       path: "/about",

@@ -6,6 +6,8 @@
     <v-container class="fluid">
       <v-row>
         <v-col cols="6" md="4" v-for="product in products" :key="product.name">
+          <router-link 
+          :to="{name:'productDetails', params:{name:product.name, dialog:true}}" :key="$route.path">
           <v-card max-width="350">
             <v-img
               src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
@@ -20,9 +22,11 @@
               {{ product.price }}$
             </v-card-subtitle>
           </v-card>
+          </router-link>
         </v-col>
       </v-row>
     </v-container>
+    <router-view :key="$router.path"></router-view>
   </v-card>
 </template>
 
