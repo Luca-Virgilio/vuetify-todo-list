@@ -1,5 +1,8 @@
 <template>
-  <div class="Home-container">
+  <div class="home-container">
+    <v-container class="pa-8">
+      <h3>Welcome</h3>
+    </v-container>
     <AddTodo @addTodo="createItem" />
     <v-card outlined>
       <v-list-item v-for="todo in todos" :key="todo.id">
@@ -55,5 +58,8 @@ export default {
 <style scoped>
 .v-list-item.theme--light {
   padding: 0;
+}
+.home-container{
+  background-color: #ede7f6 !important
 }
 </style>

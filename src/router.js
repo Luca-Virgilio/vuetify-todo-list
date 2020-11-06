@@ -5,7 +5,7 @@ import { store } from "./store/store";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: "history",
   base: process.env.BASE_URL,
   routes: [
@@ -13,6 +13,7 @@ export default new Router({
       path: "/",
       name: "home",
       component: Home,
+      // meta: { requiresAuth: true },
     },
     {
       path: "/store/:section",
@@ -34,12 +35,12 @@ export default new Router({
             import(
               /* webpackChunkName: "store" */ "./components/ProductDetails.vue"
             ),
-            beforeEnter: (to, from, next) => {
-              const exist = store.state.products.find(
-                (product) => product.name === to.params.name
-              );
-              exist ? next() : next({ name: "notFound" });
-            },
+          beforeEnter: (to, from, next) => {
+            const exist = store.state.products.find(
+              (product) => product.name === to.params.name
+            );
+            exist ? next() : next({ name: "notFound" });
+          },
         },
       ],
       beforeEnter: (to, from, next) => {
@@ -55,6 +56,20 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue"),
     },
+
+    {
+      path: "/login",
+      name: "login",
+      component: () =>
+        import(/* webpackChunkName: "login" */ "./views/Login.vue"),
+    },
+    {
+      path: "/user",
+      name: "user",
+      component: () =>
+        import(/* webpackChunkName: "user" */ "./views/User.vue"),
+      meta: { requiresAuth: true },
+    },
     {
       path: "/404",
       // alias is used for *
@@ -66,3 +81,16 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.requiresAuth) {
+    //need login
+    if (!store.state.user) {
+      next({ name: "login" });
+    } else next();
+  } else {
+    next();
+  }
+});
+
+export default router;
