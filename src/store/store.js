@@ -12,6 +12,9 @@ export const store = new Vuex.Store({
             {name:"Case", price:70},
             {name:"Cpu 4Core 7th", price:150},
             {name:"Graphics cards 3380", price:450}
+        ],
+        sections:[
+            'IT'
         ]
     },
     // specific data visualization used multiple times
