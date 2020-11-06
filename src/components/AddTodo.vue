@@ -1,9 +1,9 @@
 <template>
   <v-card color="deep-purple lighten-5" outlined>
     <v-form v-model="valid">
-      <v-container>
+      <v-container class="mr-0">
         <v-row>
-          <v-col cols="8" md="4">
+          <v-col id="input-title" cols="8" md="4" offset-md="6" class="pl-5 pl-sm-15">
             <v-text-field
               ref="nameInput"
               color="deep-purple darken-3"
@@ -13,7 +13,7 @@
               required
             ></v-text-field>
           </v-col>
-          <v-col cols="4" md="2" class="flex">
+          <v-col id="create-button" cols="4" md="2" class="pr-4 pr-sm-13 flex justify-end">
             <v-btn
               depressed
               small
@@ -60,3 +60,13 @@ export default {
   },
 };
 </script>
+<style scoped>
+@media(max-width: 600px){
+  /* #create-button{
+    padding-right: 15px !important;
+  } */
+  /* #input-title{
+    padding-left:20px
+  } */
+}
+</style>>

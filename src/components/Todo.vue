@@ -13,16 +13,22 @@
         </v-list-item-action>
 </span> -->
   <!-- <div class="todo-item"> -->
-    <v-list-item style="background-color:#D1C4E9;  padding: 0 10px;"> 
-    <v-checkbox :input-value="todo.completed" color="black" @click="todo.completed = !todo.completed"></v-checkbox>
-    <v-list-item-title color="black" :class={}>{{
+  <v-list-item class="row-item">
+    <v-checkbox
+      :input-value="todo.completed"
+      color="black"
+      @click="todo.completed = !todo.completed"
+    ></v-checkbox>
+    <v-list-item-title color="black" :class="{}">{{
       todo.title
     }}</v-list-item-title>
     <v-spacer></v-spacer>
     <v-btn icon>
-      <v-icon color="black" @click="$emit('delate',todo.id)">mdi-delete</v-icon>
+      <v-icon color="black" @click="$emit('delate', todo.id)"
+        >mdi-delete</v-icon
+      >
     </v-btn>
-    </v-list-item>
+  </v-list-item>
   <!-- </div> -->
 </template>
 
@@ -34,5 +40,13 @@ export default {
 };
 </script>
 <style scoped>
-
+.row-item {
+  background-color: #d1c4e9;
+  padding: 0 60px !important;
+}
+@media (max-width: 600px) {
+.row-item{
+  padding:0px 20px !important;
+}
+}
 </style>
